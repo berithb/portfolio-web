@@ -4,5 +4,17 @@ document.addEventListener( "DOMContentLoaded", function(){
 
     const menuToggleBtn = document.getElementById('menu-toggle');
 
+    function toggleMobileLayout() {
+        if (mainNav) {
+            mainNav.classList.toggle('is-open');
+        }
+        if(profileCard){
+            profileCard.classList.toggle('is-open');
+        }
+        document.boddy.classList.toggle('mobile-view-active');
+    }
+    if (menuToggleBtn) {
+        menuToggleBtn.addEventListener('click', toggleMobileLyout);
+    }
 
 })
