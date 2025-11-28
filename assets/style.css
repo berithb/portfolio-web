@@ -1,0 +1,378 @@
+/* Base Styles */
+:root {
+    --bg-color: #1a1515; /* Dark background, slightly off-black */
+    --text-color: #f2f2f2; /* Light text */
+    --link-color: #f2f2f2;
+    --highlight-color: #d88b8b; /* The reddish-pink highlight color */
+    --card-bg: #413639; /* Darker, round-cornered card background */
+    --tag-bg: #744343;
+    --button-bg: #d88b8b; /* Button background */
+    --button-text: #1a1515;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Use a clean, sans-serif font */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Main Layout (Container) */
+.container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Left Profile Card (Aside) */
+.profile-card {
+    width: 300px; /* Fixed width for the left side */
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    margin-right: 50px;
+    text-align: center;
+    align-self: flex-start; /* Keeps the card at the top */
+}
+
+.profile-image-container {
+    width: 100%;
+    /* Create an oval/pill shape container for the image */
+    background-color: #2e2626; /* A slightly darker background for the image area */
+    border-radius: 10px; 
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 100%; /* Makes the container square, adjust as needed */
+}
+
+.profile-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 10px; /* Match container radius */
+
+}
+
+.profile-text {
+    margin-bottom: 30px;
+}
+
+.name {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.role {
+    font-size: 0.9em;
+    color: #b3b3b3;
+}
+
+/* Download CV Button */
+.download-cv-btn {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.download-cv-btn:hover {
+    background-color: #c77b7b;
+}
+
+/* Right Content Area (Main) */
+.content-area {
+    flex-grow: 1; /* Takes up the rest of the space */
+}
+
+/* Navigation */
+.main-nav ul {
+    list-style: none;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 30px; /* Vertical and horizontal gap */
+    margin-bottom: 60px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--highlight-color);
+}
+
+/* Hero Section */
+.greeting {
+    font-size: 1.2em;
+    color: #b3b3b3;
+    margin-bottom: 10px;
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-item .number {
+    font-size: 4em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-item .plus {
+    font-size: 0.6em; /* Adjust size of the plus sign */
+    vertical-align: top;
+    margin-left: -5px; /* Pull the plus sign closer */
+}
+
+.stat-item .label {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 5px;
+    color: #b3b3b3;
+}
+
+.stat-item .completed-projects {
+    padding-left: 2px; /* Slight adjustment for alignment */
+}
+
+
+/* About Me Section */
+.section-title {
+    font-size: 2em;
+    font-weight: 500;
+    color: #b3b3b3; /* Grayish color for the title */
+    margin-bottom: 25px;
+}
+
+.about-text {
+    font-size: 1.5em;
+    font-weight: 300;
+    max-width: 700px;
+    line-height: 1.4;
+}
+
+
+/* --- Works/Portfolio Section Styles --- */
+.works-section {
+    padding-bottom: 80px;
+}
+
+.works-section .section-title {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.projects-nav-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-item {
+    background-color: var(--tag-bg);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.filter-item.active {
+    background-color: var(--highlight-color);
+    color: var(--bg-color);
+}
+.portfolio-header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 20px;
+}
+.section-title{
+    margin-bottom: 0;
+    margin-right: 30px;
+    white-space: nowrap;
+}
+.projects-nav-filters{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40;
+    justify-content: space-between;
+}
+
+.projects-grid {
+    display: grid;
+    /* Create three columns: the center one is larger for the large project */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px;
+}
+
+.project-item {
+    margin-bottom: 0;
+}
+
+/* The large project spans all three columns */
+.project-item.large {
+    grid-column: 1 / span 2; 
+    max-width: 800px; /* Optional: cap its max width */
+    justify-self: center; /* Center the large item */
+}
+
+/* Project Image Containers */
+.project-image-container {
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    position: relative;
+    /* Use padding trick to ensure a consistent aspect ratio */
+    height: 0;
+    padding-bottom: 70%; /* Aspect ratio for general items */
+}
+
+.project-item.large .project-image-container {
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio for the large screen image */
+    height: 0;
+    position: relative;
+    overflow: hidden;
+  
+}
+
+.project-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* Project Tags (small labels inside project boxes) */
+.project-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.tag {
+    background-color: var(--tag-bg);
+    color: var(--text-color);
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+
+/* Project Titles */
+.project-title {
+    font-size: 1.2em;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-color);
+    text-transform: capitalize;
+}
+
+/* Highlighting the red/pink text */
+.highlight {
+    color: var(--highlight-color);
+}
+.main-serv-nav a{
+   
+     text-decoration: none;
+    color: var(--link-color);
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+.main-serv-nav ul {
+    justify-content: center;
+    list-style: none;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 30px; /* Vertical and horizontal gap */
+    margin-bottom: 60px;
+}
+.main-serv-nav a:hover {
+    color: var(--highlight-color);
+}
+.services-main-title{
+font-size: 3em;
+font-weight: 500;
+color: var(--text-color);
+margin-bottom: 50px;
+padding-top: 20px;
+}
+.services-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:30px;
+}
+.service-card{
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 250px;
+}
+.service-title{
+font-size: 1.6em;
+font-weight: 600;
+color: var(--highlight-color);
+margin-bottom: 10px;
+
+}
+.service-description{
+    font-size: 1em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    flex-grow:1;
+}
+.service-link{
+    display: inline-block;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1em;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--text-color);
+    align-self: flex-start;
+}
