@@ -376,3 +376,73 @@ margin-bottom: 10px;
     border-bottom: 1px solid var(--text-color);
     align-self: flex-start;
 }
+.resume-section{
+    padding-bottom: 80px;
+}
+.resume-main-title{
+    font-size:3em;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 50px;
+    padding-top: 20px;
+}
+.resume-subsection{
+    margin-bottom: 60px;
+}
+.resume-filter-item{
+    display: inline-block;
+    background-color: var(--highlight-color);
+    color: var(--bg-color);
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-right: 20px;
+    margin-left: 40px;
+
+}
+.resume-content-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 40px 60px;
+}
+.resume-item{
+    position: relative;
+    padding-left: 20px;
+}
+.resume-date{
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+.timeline-dot{
+    position: absolute;
+    left: 0;
+    top:5px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--highlight-color);
+    border-radius: 50%;
+
+}
+.resume-item-title{
+    font-size: 1.1em;
+    font-weight: normal;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+.testimonial-grid{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 30px;
+margin-top: 30px;
+}
+.testimonial-card{
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    min-height: 200px;
+}
