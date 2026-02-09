@@ -1,13 +1,14 @@
 /* Base Styles */
 :root {
-    --bg-color: #1a1515; /* Dark background, slightly off-black */
-    --text-color: #f2f2f2; /* Light text */
+    --bg-color: #1a1515;
+    --text-color: #f2f2f2;
     --link-color: #f2f2f2;
-    --highlight-color: #d88b8b; /* The reddish-pink highlight color */
-    --card-bg: #413639; /* Darker, round-cornered card background */
+    --highlight-color: #d88b8b;
+    --card-bg: #413639;
     --tag-bg: #744343;
-    --button-bg: #d88b8b; /* Button background */
+    --button-bg: #d88b8b;
     --button-text: #1a1515;
+    --transition: all 0.3s ease;
 }
 
 * {
@@ -17,10 +18,45 @@
 }
 
 body {
-    font-family: Arial, sans-serif; /* Use a clean, sans-serif font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--highlight-color);
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--button-text);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.mobile-menu-toggle:hover {
+    transform: scale(1.05);
 }
 
 /* Main Layout (Container) */
@@ -33,24 +69,27 @@ body {
 
 /* Left Profile Card (Aside) */
 .profile-card {
-    width: 300px; /* Fixed width for the left side */
+    width: 300px;
     background-color: var(--card-bg);
     border-radius: 20px;
     padding: 30px;
     margin-right: 50px;
     text-align: center;
-    align-self: flex-start; /* Keeps the card at the top */
+    align-self: flex-start;
+    position: sticky;
+    top: 20px;
+    transition: var(--transition);
 }
 
 .profile-image-container {
     width: 100%;
-    /* Create an oval/pill shape container for the image */
-    background-color: #2e2626; /* A slightly darker background for the image area */
-    border-radius: 10px; 
+    background-color: #2e2626;
+    border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
     position: relative;
-    padding-top: 100%; /* Makes the container square, adjust as needed */
+    padding-top: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .profile-image {
@@ -59,9 +98,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-    border-radius: 10px; /* Match container radius */
+    object-fit: cover;
+    border-radius: 10px;
+    transition: var(--transition);
+}
 
+.profile-image:hover {
+    transform: scale(1.05);
 }
 
 .profile-text {
@@ -84,17 +127,20 @@ body {
     display: inline-block;
     background-color: var(--button-bg);
     color: var(--button-text);
-    padding: 10px 25px;
-    border-radius: 5px;
+    padding: 12px 30px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
     font-size: 0.9em;
     text-transform: uppercase;
-    transition: background-color 0.3s;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(216, 139, 139, 0.3);
 }
 
 .download-cv-btn:hover {
     background-color: #c77b7b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(216, 139, 139, 0.4);
 }
 
 /* Right Content Area (Main) */
@@ -105,21 +151,43 @@ body {
 /* Navigation */
 .main-nav ul {
     list-style: none;
-    flex-wrap: nowrap;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px 30px; /* Vertical and horizontal gap */
+    gap: 20px 30px;
     margin-bottom: 60px;
+}
+
+.main-nav li {
+    position: relative;
 }
 
 .main-nav a {
     text-decoration: none;
     color: var(--link-color);
     font-size: 1.1em;
-    transition: color 0.3s;
+    transition: var(--transition);
+    position: relative;
+    text-transform: capitalize;
 }
 
-.main-nav a:hover {
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--highlight-color);
+    transition: var(--transition);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
     color: var(--highlight-color);
 }
 
@@ -209,12 +277,18 @@ body {
 .filter-item {
     background-color: var(--tag-bg);
     color: var(--text-color);
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
     font-size: 0.9em;
     cursor: pointer;
-    flex-grow: 0;
-    flex-shrink: 0;
+    transition: var(--transition);
+    text-transform: capitalize;
+}
+
+.filter-item:hover {
+    background-color: var(--highlight-color);
+    color: var(--bg-color);
+    transform: translateY(-2px);
 }
 
 .filter-item.active {
@@ -241,20 +315,23 @@ margin-bottom: 20px;
 
 .projects-grid {
     display: grid;
-    /* Create three columns: the center one is larger for the large project */
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
 .project-item {
     margin-bottom: 0;
+    transition: var(--transition);
+    cursor: pointer;
 }
 
-/* The large project spans all three columns */
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
 .project-item.large {
-    grid-column: 1 / span 2; 
-    max-width: 800px; /* Optional: cap its max width */
-    justify-self: center; /* Center the large item */
+    grid-column: 1 / span 2;
+    max-width: 100%;
 }
 
 /* Project Image Containers */
@@ -264,17 +341,13 @@ margin-bottom: 20px;
     overflow: hidden;
     margin-bottom: 15px;
     position: relative;
-    /* Use padding trick to ensure a consistent aspect ratio */
     height: 0;
-    padding-bottom: 70%; /* Aspect ratio for general items */
+    padding-bottom: 70%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .project-item.large .project-image-container {
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio for the large screen image */
-    height: 0;
-    position: relative;
-    overflow: hidden;
-  
+    padding-bottom: 56.25%;
 }
 
 .project-image {
@@ -283,7 +356,12 @@ margin-bottom: 20px;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.project-item:hover .project-image {
+    transform: scale(1.1);
 }
 
 /* Project Tags (small labels inside project boxes) */
@@ -296,9 +374,15 @@ margin-bottom: 20px;
 .tag {
     background-color: var(--tag-bg);
     color: var(--text-color);
-    padding: 4px 8px;
+    padding: 5px 12px;
     border-radius: 5px;
     font-size: 0.8em;
+    transition: var(--transition);
+}
+
+.project-item:hover .tag {
+    background-color: var(--highlight-color);
+    color: var(--bg-color);
 }
 
 /* Project Titles */
@@ -709,4 +793,293 @@ margin-top: 30px;
     font-size: 1.1em;
     line-height: 2;
     color: var(--link-color);
+}
+
+
+/* ========================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ======================================== */
+
+/* Tablet Landscape (1024px and below) */
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 30px 15px;
+    }
+
+    .profile-card {
+        width: 250px;
+        margin-right: 30px;
+        padding: 25px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.8em;
+    }
+
+    .stats {
+        gap: 50px;
+    }
+
+    .projects-grid {
+        gap: 20px;
+    }
+}
+
+/* Tablet Portrait (768px and below) */
+@media screen and (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 20px;
+        padding-top: 80px;
+    }
+
+    .profile-card {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 30px;
+        position: relative;
+        top: 0;
+        display: none;
+    }
+
+    .profile-card.is-open {
+        display: block;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--card-bg);
+        padding: 80px 20px 20px;
+        transition: var(--transition);
+        z-index: 999;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-nav.is-open {
+        left: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 30px;
+    }
+
+    .main-nav li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 15px 10px;
+        font-size: 1.2em;
+    }
+
+    .main-nav a::after {
+        display: none;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-item.large {
+        grid-column: 1;
+    }
+
+    .portfolio-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .section-title {
+        margin-right: 0;
+    }
+
+    .projects-nav-filters {
+        width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 10px;
+    }
+
+    .filter-item {
+        white-space: nowrap;
+    }
+
+    .services-grid,
+    .resume-content-grid,
+    .testimonial-grid,
+    .blog-grid,
+    .tool-stack-grid,
+    .core-skills-grid,
+    .soft-skills-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-details-grid {
+        flex-direction: column;
+    }
+
+    .phone-box, .email-box {
+        max-width: 100%;
+    }
+
+    .contact-form .form-row {
+        flex-direction: column;
+    }
+
+    .services-main-title,
+    .resume-main-title,
+    .blog-main-title,
+    .skills-main-title,
+    .contacts-main-title {
+        font-size: 2.2em;
+    }
+}
+
+/* Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 15px;
+        padding-top: 70px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-text .name {
+        font-size: 1.3em;
+    }
+
+    .download-cv-btn {
+        padding: 10px 20px;
+        font-size: 0.85em;
+    }
+
+    .hero-section h1 {
+        font-size: 1.8em;
+    }
+
+    .greeting {
+        font-size: 1em;
+    }
+
+    .stat-item .number {
+        font-size: 3em;
+    }
+
+    .stat-item .label {
+        font-size: 1em;
+    }
+
+    .about-text {
+        font-size: 1.2em;
+    }
+
+    .section-title {
+        font-size: 1.6em;
+    }
+
+    .projects-nav-filters {
+        gap: 10px;
+    }
+
+    .filter-item {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+
+    .project-title {
+        font-size: 1em;
+    }
+
+    .service-card {
+        padding: 25px;
+        min-height: 200px;
+    }
+
+    .service-title {
+        font-size: 1.3em;
+    }
+
+    .resume-filter-item {
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+
+    .contact-form-area {
+        padding: 25px;
+    }
+
+    .form-title {
+        font-size: 1.3em;
+    }
+
+    .services-main-title,
+    .resume-main-title,
+    .blog-main-title,
+    .skills-main-title,
+    .contacts-main-title {
+        font-size: 1.8em;
+    }
+}
+
+/* Extra Small Mobile (360px and below) */
+@media screen and (max-width: 360px) {
+    .hero-section h1 {
+        font-size: 1.5em;
+    }
+
+    .stat-item .number {
+        font-size: 2.5em;
+    }
+
+    .mobile-menu-toggle {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .mobile-menu-toggle span {
+        width: 22px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .mobile-menu-toggle,
+    .download-cv-btn,
+    .main-nav {
+        display: none;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .profile-card {
+        page-break-inside: avoid;
+    }
 }
