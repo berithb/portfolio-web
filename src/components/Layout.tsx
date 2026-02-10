@@ -42,7 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
         <aside className={`w-[300px] bg-card rounded-[20px] p-8 text-center lg:sticky lg:top-5 lg:block ${isMenuOpen ? 'fixed top-0 left-0 z-[999] h-screen overflow-y-auto' : 'hidden'}`}>
           <div className="w-full bg-[#2e2626] rounded-lg overflow-hidden mb-5 pt-[100%] relative">
             <img
-              src="/images/belite.jpeg"
+              src="public/image/belite.jpeg"
               alt="Mushikiwabo Bat Belite"
               className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
             />
