@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const menuToggleBtn = document.getElementById('menu-toggle');
     const body = document.body;
 
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    body.appendChild(overlay);
+
     // Mobile menu toggle
     function toggleMobileLayout() {
         if (mainNav) {
@@ -12,12 +17,20 @@ document.addEventListener("DOMContentLoaded", function() {
         if (profileCard) {
             profileCard.classList.toggle('is-open');
         }
+        overlay.classList.toggle('is-open');
         body.classList.toggle('mobile-view-active');
     }
 
     if (menuToggleBtn) {
         menuToggleBtn.addEventListener('click', toggleMobileLayout);
     }
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', function() {
+        if (mainNav && mainNav.classList.contains('is-open')) {
+            toggleMobileLayout();
+        }
+    });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
