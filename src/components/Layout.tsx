@@ -1,6 +1,9 @@
 import { useState, ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+
+
+
 interface LayoutProps {
   children: ReactNode;
 }
@@ -51,12 +54,13 @@ const Layout = ({ children }: LayoutProps) => {
             Mushikiwabo Bat <span className="text-primary">Belite</span>
           </h3>
           <p className="text-gray-400 text-sm mb-8">Software Developer</p>
-          <a
-            href="/cv"
-            className="inline-block bg-primary text-dark px-8 py-3 rounded-lg font-bold text-sm uppercase hover:bg-primary/90 transition"
-          >
-            Download CV
-          </a>
+          
+<Link
+  to="/cv"
+  className="inline-block bg-primary text-dark px-8 py-3 rounded-lg font-bold text-sm uppercase hover:bg-primary/90 transition"
+>
+ Download CV
+</Link>
         </aside>
 
         <main className="flex-1 lg:ml-12">
